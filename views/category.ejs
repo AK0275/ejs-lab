@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= category %> Menu</title> <!-- Set title dynamically based on category -->
+</head>
+<body>
+<%- include('./partials/nav') %> <!-- Include the nav partial -->
+
+<h1><%= category %> Menu</h1> <!-- Display the category name dynamically -->
+
+<% if (menuItems.length === 0) { %>
+    <p>No items found in this category.</p>
+<% } else { %>
+    <ul>
+    <% menuItems.forEach(item => { %>
+
+        <li>
+        <h2><%= item.name %></h2>
+        <p><strong>Price:</strong> $<%= item.price.toFixed(2) %></p>
+        <p><strong>Rating:</strong> <%= item.rating %> stars</p>
+        <p><strong>Details:</strong> <%= item.details %></p>
+        </li>
+
+
+    <% }); %>
+    </ul>
+
+<% } %>
+
+
+</body>
+</html>
