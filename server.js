@@ -53,9 +53,7 @@ const RESTAURANT = {
     ]
 }
 
-app.get('/', (req, res) => {
-res.render('home', {restaurant : RESTAURANT});
-})
+
 
 app.get('/menu', (req, res) => {
     res.render('menu', { menu: RESTAURANT.menu })
@@ -66,7 +64,13 @@ app.get('/menu/:category', (req, res) => {
 
     const menuItems = RESTAURANT.menu.filter(item => item.category.toLowerCase() === category)
 
-    const capitalizedCategory = category.charAt(0).toUpperCase() = category.slice(1)
+    // const capitalizedCategory = category.charAt[0].toUpperCase() = category.slice(1)
 
-    res.render('category', { menuItems: menuItems, category: capitalizedCategory})
+    res.render('category', { category, menuItems})
 })
+
+app.get('/', (req, res) => {
+res.render('home', {restaurant : RESTAURANT});
+})
+
+app.listen(3000)
